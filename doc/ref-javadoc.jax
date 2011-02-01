@@ -1,0 +1,56 @@
+
+*ref-javadoc.txt*		Javadoc 用の ref ソース。
+
+Version: 0.0.1
+Author : pekepeke
+License: クリエイティブ・コモンズの表示 2.1 日本ライセンス
+	 <http://creativecommons.org/licenses/by/2.1/jp/>
+
+==============================================================================
+目次						*ref-javadoc-contents*
+
+概要				|ref-javadoc-introduction|
+カスタマイズ			|ref-javadoc-customizing|
+更新履歴			|ref-javadoc-changelog|
+
+
+==============================================================================
+概要						*ref-javadoc-introduction*
+
+*ref-javadoc* は Java のAPIドキュメント用の|ref| ソースです。
+
+
+要件:
+- |ref| 0.3.2 以降
+- Java API Manual (http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+
+==============================================================================
+カスタマイズ					*ref-javadoc-customizing*
+
+g:ref_javadoc_cmd					*g:ref_javadoc_cmd*
+			html を表示するためのコマンドです。%s は html ファイル
+			に置き換えられます。コマンドとその引数を含む |List| も
+			指定できます。
+			デフォルト値は以下の物でコマンドが実行可能なものです。
+			- 'elinks -dump -no-numbering -no-references %s'
+			- 'w3m -dump %s'
+			- 'links -dump %s'
+			- 'lynx -dump -nonumbers %s'
+			実行ファイルは環境変数 $PATH が適切に設定されており、
+			また、実行可能なファイルである必要があります。
+
+g:ref_javadoc_path					*g:ref_javadoc_path*
+			Java API マニュアルのパスです。パスはローカルのディレ
+			クトリである必要があります。
+			パスはロケール部分まで指定する必要があります。
+
+==============================================================================
+更新履歴					*ref-javadoc-changelog*
+
+
+0.0.1	2010-12-20
+	- 初版。
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
