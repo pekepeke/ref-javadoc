@@ -10,7 +10,6 @@ set cpo&vim
 " config. {{{1
 if !exists('g:ref_javadoc_path')  " {{{2
   let g:ref_javadoc_path = ''
-  let g:ref_javadoc_path = expand('~/.bin/apps/jdk-6-doc/ja/')
 endif
 
 if !exists('g:ref_javadoc_cmd')  " {{{2
