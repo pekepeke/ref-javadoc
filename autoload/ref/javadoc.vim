@@ -111,7 +111,7 @@ endfunction
 function! s:get_index_files(re_paths) " {{{2
   let files = []
   for re_path in a:re_paths
-    let files += split(glob(re_path . '/allclasses-noframe\.html'), "\n")
+    let files += split(glob(re_path . '/allclasses-noframe.html'), "\n")
   endfor
   return files
 endfunction
