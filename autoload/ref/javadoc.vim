@@ -102,6 +102,7 @@ function! s:get_root_directories() "{{{2
   let files = s:get_index_files([
         \ g:ref_javadoc_path . '/api/',
         \ g:ref_javadoc_path . '/jre/api/*/*/',
+        \ g:ref_javadoc_path . '/jre/api/*/*/*/',
         \ g:ref_javadoc_path . '/jdk/api/*/*/',
         \ ])
   return map(files,
@@ -187,10 +188,11 @@ endfunction
 
 function! s:gather_func(name)  "{{{2
   for fname in ['allclasses-noframe.html', 'allclasses-frame.html']
-  if filereadable(g:ref_javadoc_path.'/'.a:name.'/'.fname)
-    let list = readfile(g:ref_javadoc_path.'/'.a:name.'/'.fname)
-    call map(filter(list, 'v:val =~# "<A HREF="'), 'substitute(v:val, ".*A HREF=\"\\(.*\\)\\.html\".*", "\\1", "")')
-    return map(list, 'substitute(v:val, "/", ".", "g")')
+    if filereadable(g:ref_javadoc_path.'/'.a:name.'/'.fname)
+      let list = readfile(g:ref_javadoc_path.'/'.a:name.'/'.fname)
+      call map(filter(list, 'v:val =~? "<A HREF="'), 'substitute(v:val, ".*A HREF=\"\\(.*\\)\\.html\".*", "\\1", "")')
+      return map(list, 'substitute(v:val, "/", ".", "g")')
+    endif
   endfor
 endfunction
 
