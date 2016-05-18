@@ -10,6 +10,8 @@ set cpo&vim
 " config. {{{1
 if !exists('g:ref_javadoc_path')  " {{{2
   let g:ref_javadoc_path = ''
+else
+  let g:ref_javadoc_path = substitute(g:ref_javadoc_path, '\\', '/', 'g')
 endif
 
 if !exists('g:ref_javadoc_cmd')  " {{{2
@@ -112,7 +114,7 @@ endfunction
 function! s:get_index_files(re_paths) " {{{2
   let files = []
   for re_path in a:re_paths
-    let files += split(glob(re_path . '/allclasses-noframe.html'), "\n")
+    let files += map(split(glob(re_path . '/allclasses-noframe.html'), "\n"), 'substitute(v:val, "\\\\", "/", "g")')
   endfor
   return files
 endfunction
